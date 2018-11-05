@@ -1,0 +1,22 @@
+package com.cityGuideTL.backend.Controllers;
+
+import com.cityGuideTL.backend.Entities.City;
+import com.cityGuideTL.backend.Services.FlickrService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/flickr")
+public class FlickrController {
+
+    @Autowired
+    private FlickrService flickrService;
+
+    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
+    public City getMostVisitedPlaces(@PathVariable("city") String city){
+        return flickrService.getMostVisitedCities(city);
+    }
+}

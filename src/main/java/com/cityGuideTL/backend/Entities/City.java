@@ -1,0 +1,64 @@
+package com.cityGuideTL.backend.Entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.boot.jackson.JsonComponent;
+import pember.kmeans.geo.Cluster;
+
+import java.util.List;
+
+@JsonComponent
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class City {
+    @JsonProperty
+    private String place_id;
+    @JsonProperty
+    private String latitude;
+    @JsonProperty
+    private String longitude;
+    @JsonProperty
+    private String woe_name;
+    @JsonProperty("_content")
+    private String content;
+
+    private List<Cluster> clusteredPoints;
+
+    public City() {
+    }
+
+    public City(String place_id,String latitude, String longitude, String woe_name, String content) {
+        this.place_id = place_id;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.woe_name = woe_name;
+        this.content = content;
+    }
+
+    public String getPlace_id() {
+        return place_id;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getWoe_name() {
+        return woe_name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public List<Cluster> getClusteredPoints() {
+        return clusteredPoints;
+    }
+
+    public void setClusteredPoints(List<Cluster> clusteredPoints) {
+        this.clusteredPoints = clusteredPoints;
+    }
+}
