@@ -10,7 +10,6 @@ public class FlickrService {
     private City city;
     private PhotosList photosList;
     private FlickrDao flickrDao = new FlickrDao();
-    private ClusterService clusterService;
 
     public City getMostVisitedCities(String city){
 
@@ -18,9 +17,7 @@ public class FlickrService {
 
         photosList = flickrDao.getCityPhotos(this.city.getPlace_id());
 
-        clusterService = new ClusterService(photosList);
 
-        this.city.setClusteredPoints(clusterService.getClusters(5));
 
         return this.city;
     }

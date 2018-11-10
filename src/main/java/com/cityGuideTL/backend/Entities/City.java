@@ -3,9 +3,6 @@ package com.cityGuideTL.backend.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
-import pember.kmeans.geo.Cluster;
-
-import java.util.List;
 
 @JsonComponent
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,7 +18,6 @@ public class City {
     @JsonProperty("_content")
     private String content;
 
-    private List<Cluster> clusteredPoints;
 
     public City() {
     }
@@ -52,13 +48,5 @@ public class City {
 
     public String getContent() {
         return content;
-    }
-
-    public List<Cluster> getClusteredPoints() {
-        return clusteredPoints;
-    }
-
-    public void setClusteredPoints(List<Cluster> clusteredPoints) {
-        this.clusteredPoints = clusteredPoints;
     }
 }
