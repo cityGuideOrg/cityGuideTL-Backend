@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Photo {
+public class Photo implements Comparable<Photo> {
     @JsonProperty("id")
     @JsonIgnoreProperties()
     private String photoID;
@@ -14,6 +14,20 @@ public class Photo {
     private String latitude;
 
     private Point point;
+
+    private int totalNearPhotos = 0;
+
+    public int getTotalNearPhotos() {
+        return totalNearPhotos;
+    }
+
+    public void setTotalNearPhotos(int totalNearPhotos) {
+        this.totalNearPhotos = totalNearPhotos;
+    }
+
+    public void increaseTotalNearPhotosByOne(){
+        totalNearPhotos ++;
+    }
 
     public Point getPoint() {
         return point;
@@ -52,5 +66,19 @@ public class Photo {
 
     public void setLatitude(String latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public int compareTo(Photo comparesTo) {
+        if (this.totalNearPhotos > comparesTo.totalNearPhotos) {
+            return 1;
+        }
+        if (this.totalNearPhotos < comparesTo.totalNearPhotos) {
+            return -1;
+        }
+        if (this.totalNearPhotos == comparesTo.totalNearPhotos) {
+            return 0;
+        }
+        return 0;
     }
 }

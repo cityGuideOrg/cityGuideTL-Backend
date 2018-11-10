@@ -33,11 +33,12 @@ public class FlickrDao {
         photosList.clear();
         int currentPage =1;
         int totalPages = 5;
+        long minUploadDate = System.currentTimeMillis()/1000L-18748800L;
 
         String jsonString="";
-        while(currentPage<=20 && currentPage<totalPages){
+        while(currentPage<=10 && currentPage<totalPages){
             //HTTP request string
-            final String url ="https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+apiKey+"&place_id="+cityID+"&extras=geo&format=json&nojsoncallback=1&per_page=500&page="+currentPage;
+            final String url ="https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+apiKey+"&min_upload_date="+minUploadDate+"&place_id="+cityID+"&extras=geo&format=json&nojsoncallback=1&per_page=500&page="+currentPage;
 
             //Get the json as string and format it to a valid form cutting the first 24 characters
             RestTemplate restTemplate = new RestTemplate();
