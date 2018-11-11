@@ -1,23 +1,15 @@
 package com.cityGuideTL.backend.Entities;
 
-<<<<<<< HEAD
-public class Point {
-
-    private double latitude;
-    private double longitude;
-
-    public Point(double latitude, double longitude) {
-=======
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
 
 import java.math.BigDecimal;
 @JsonComponent
 public class Point {
-@JsonProperty
+
+    @JsonProperty
     private BigDecimal latitude;
     @JsonProperty
-
     private BigDecimal longitude;
 
     public Point() {
@@ -25,36 +17,29 @@ public class Point {
     }
 
     public Point(BigDecimal latitude, BigDecimal longitude) {
->>>>>>> random push for kiziridis
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
     public Point(String latitude, String longitude) {
-        this.latitude = Double.parseDouble(latitude);
-        this.longitude = Double.parseDouble(longitude);
+        this.latitude = new BigDecimal(latitude);
+        this.longitude = new BigDecimal(longitude);
     }
 
-<<<<<<< HEAD
-    public double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
     public void setLatitude(double latitude) {
-        this.latitude = latitude;
+        this.latitude =  new BigDecimal(latitude);
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
 
     public void setLongitude(double longitude) {
-        this.longitude = longitude;
+        this.longitude = new BigDecimal(longitude);
     }
-=======
-    public BigDecimal getLatitude() {
-        return latitude;
-    }
+
+
 
     public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
@@ -102,5 +87,4 @@ public class Point {
 
         return Math.sqrt(distance);
     }
->>>>>>> random push for kiziridis
 }
