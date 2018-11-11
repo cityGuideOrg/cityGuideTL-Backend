@@ -18,7 +18,7 @@ public class UserController {
     @ResponseBody
     public List<User> getAll() {
         List<User> list = userRepository.findAll();
-        return list;
+        return userRepository.findAll();
     }
 
     //create a user
@@ -48,8 +48,15 @@ public class UserController {
 
     @PutMapping(path="/{id}")
     @ResponseBody
-    public void updateUser(@PathVariable User body) {
-        User user = body;
-        userRepository.save(user);
+    public void updateUser(@RequestBody User body, @PathVariable Integer id) {
+        //you cant simply replace the object because the null id is replaced also
+        //you either need to get an id on the body and replace the whole user and save it or just replace the names etc.
+        User userToUpdate = userRepository.getOne(id);
+        userToUpdate.setFirstname(body.getFirstname());
+        userToUpdate.setLastname(body.getLastname());
+        userToUpdate.setEmail(body.getEmail());
+        userToUpdate.setPassword(body.getPassword());
+        userToUpdate.setUsername(body.getUsername());
+        userRepository.save(userToUpdate);
     }
 }

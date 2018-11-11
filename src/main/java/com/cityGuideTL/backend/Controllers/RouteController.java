@@ -64,10 +64,6 @@ public class RouteController {
 
         }
 
-
-
-
-
         double minCost = -1;
         Cost minValue = null;
 
@@ -77,33 +73,12 @@ public class RouteController {
                 minCost = all_cost.cost;
             }
         }
-
-
-
         return minValue;
-
-
-
-
-
     }
-
-
-
-
     @PostMapping(path="/findBestRoute")
     public @ResponseBody
     Cost addUser(@RequestBody BestRouteModel body) {
-
-
         Cost stuff = Visit(body.startingPoint, body.placesNeedsToBeVisited, null);
-
-
-
         return stuff;
     }
-
-
-
-
 }
