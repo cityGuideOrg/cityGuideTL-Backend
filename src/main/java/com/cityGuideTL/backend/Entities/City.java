@@ -3,9 +3,8 @@ package com.cityGuideTL.backend.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
-import pember.kmeans.geo.Cluster;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @JsonComponent
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,7 +20,7 @@ public class City {
     @JsonProperty("_content")
     private String content;
 
-    private List<Cluster> clusteredPoints;
+    private ArrayList<Photo> topFivePhotos = new ArrayList<>();
 
     public City() {
     }
@@ -54,11 +53,15 @@ public class City {
         return content;
     }
 
-    public List<Cluster> getClusteredPoints() {
-        return clusteredPoints;
+    public ArrayList<Photo> getTopFivePhotos() {
+        return topFivePhotos;
     }
 
-    public void setClusteredPoints(List<Cluster> clusteredPoints) {
-        this.clusteredPoints = clusteredPoints;
+    public void setTopFivePhotos(ArrayList<Photo> topFivePhotos) {
+        this.topFivePhotos = topFivePhotos;
+    }
+
+    public void addATopPhoto(Photo topPhoto){
+        this.topFivePhotos.add(topPhoto);
     }
 }

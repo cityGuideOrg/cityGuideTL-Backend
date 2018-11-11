@@ -1,50 +1,33 @@
 package com.cityGuideTL.backend.Entities;
 
+public class Point {
 
-import pember.kmeans.geo.GeographicPoint;
+    private double latitude;
+    private double longitude;
 
-import java.math.BigDecimal;
-
-public class Point implements GeographicPoint {
-
-    private BigDecimal latitude;
-    private BigDecimal longitude;
-
-    public Point(BigDecimal latitude, BigDecimal longitude) {
+    public Point(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
     public Point(String latitude, String longitude) {
-        this.latitude = new BigDecimal(latitude);
-        this.longitude = new BigDecimal(longitude);
+        this.latitude = Double.parseDouble(latitude);
+        this.longitude = Double.parseDouble(longitude);
     }
 
-    @Override
-    public BigDecimal getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    @Override
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    @Override
-    public BigDecimal getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    @Override
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = new BigDecimal(latitude);
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = new BigDecimal(longitude);
     }
 }

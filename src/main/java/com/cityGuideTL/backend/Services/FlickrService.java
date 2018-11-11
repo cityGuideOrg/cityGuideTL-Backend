@@ -12,15 +12,16 @@ public class FlickrService {
     private FlickrDao flickrDao = new FlickrDao();
     private ClusterService clusterService;
 
-    public City getMostVisitedCities(String city){
+    public City getMostVisitedPhotosOfCity(String city){
 
+        //Get city from Flickr
         this.city = flickrDao.getCity(city);
 
+        //Get the photos of city from Flickr
         photosList = flickrDao.getCityPhotos(this.city.getPlace_id());
 
-        clusterService = new ClusterService(photosList);
-
-        this.city.setClusteredPoints(clusterService.getClusters(5));
+        //get the top five photos of photoslist and set them to the city
+        this.city.setTopFivePhotos(ClusterService.getTopFivePhotos(photosList));
 
         return this.city;
     }

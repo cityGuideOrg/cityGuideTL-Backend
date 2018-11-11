@@ -6,7 +6,9 @@ import org.springframework.boot.jackson.JsonComponent;
 
 import java.util.ArrayList;
 
+
 @JsonComponent
+
 public class CitiesList {
     @JsonProperty("place")
     private ArrayList<City> cityList;

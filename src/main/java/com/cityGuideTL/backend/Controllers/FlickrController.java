@@ -17,6 +17,6 @@ public class FlickrController {
 
     @RequestMapping(value = "/{city}", method = RequestMethod.GET)
     public City getMostVisitedPlaces(@PathVariable("city") String city){
-        return flickrService.getMostVisitedCities(city);
+        return flickrService.getMostVisitedPhotosOfCity(city);
     }
 }

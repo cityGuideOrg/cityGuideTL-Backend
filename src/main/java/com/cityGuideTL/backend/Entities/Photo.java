@@ -1,5 +1,6 @@
 package com.cityGuideTL.backend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -13,6 +14,7 @@ public class Photo implements Comparable<Photo> {
     @JsonProperty("latitude")
     private String latitude;
 
+    @JsonIgnore
     private Point point;
 
     private int totalNearPhotos = 0;
