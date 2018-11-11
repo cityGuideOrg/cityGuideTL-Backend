@@ -7,10 +7,10 @@ public class HaversineDistanceService {
 
     public static double distance(Point startPoint, Point endPoint) {
 
-        double startLat = startPoint.getLatitude();
-        double startLong = startPoint.getLongitude();
-        double endLat = endPoint.getLatitude();
-        double endLong = endPoint.getLongitude();
+        double startLat = startPoint.getLatitude().doubleValue();
+        double startLong = startPoint.getLongitude().doubleValue();
+        double endLat = endPoint.getLatitude().doubleValue();
+        double endLong = endPoint.getLongitude().doubleValue();
 
         double dLat  = Math.toRadians((endLat - startLat));
         double dLong = Math.toRadians((endLong - startLong));

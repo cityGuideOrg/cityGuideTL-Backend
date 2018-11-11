@@ -38,8 +38,6 @@
 			<scope>test</scope>
 		</dependency>
 
-<<<<<<< HEAD
-=======
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -75,7 +73,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
->>>>>>> random push for kiziridis
 	</dependencies>
 	<build>
 		<plugins>

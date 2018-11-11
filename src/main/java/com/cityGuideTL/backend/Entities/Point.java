@@ -16,6 +16,10 @@ public class Point {
 
     }
 
+    public Point(double latitude, double longitude) {
+        this.latitude = new BigDecimal(latitude);
+        this.longitude = new BigDecimal(longitude);
+    }
     public Point(BigDecimal latitude, BigDecimal longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
