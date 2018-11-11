@@ -5,6 +5,7 @@ import com.cityGuideTL.backend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -13,7 +14,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
     //get all users
-    @GetMapping(path="/user")
+    @GetMapping
     @ResponseBody
     public List<User> getAll() {
         List<User> list = userRepository.findAll();
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     //create a user
-    @PostMapping(path="/user")
+    @PostMapping
     @ResponseBody
     public void addUser(@RequestBody User body) {
         User user = new User();
@@ -30,24 +31,24 @@ public class UserController {
     }
 
     //get user with specified id
-    @GetMapping(path="/user/{id}")
+    @GetMapping(path="/{id}")
     @ResponseBody
-    public User getUser(@RequestParam Integer id) {
+    public User getUser(@PathVariable Integer id) {
         User user = userRepository.findById(id).get();
         return user;
     }
 
     //delete a user with specified id
-    @DeleteMapping(path="/user/{id}")
+    @DeleteMapping(path="/{id}")
     @ResponseBody
-    public void deleteUser(@RequestParam Integer id) {
+    public void deleteUser(@PathVariable Integer id) {
         User user = userRepository.findById(id).get();
         userRepository.delete(user);
     }
 
-    @PutMapping(path="/user/{id}")
+    @PutMapping(path="/{id}")
     @ResponseBody
-    public void updateUser(@RequestBody User body) {
+    public void updateUser(@PathVariable User body) {
         User user = body;
         userRepository.save(user);
     }
