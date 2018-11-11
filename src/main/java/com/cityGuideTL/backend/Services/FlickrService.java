@@ -10,7 +10,6 @@ public class FlickrService {
     private City city;
     private PhotosList photosList;
     private FlickrDao flickrDao = new FlickrDao();
-    private ClusterService clusterService;
 
     public City getMostVisitedPhotosOfCity(String city){
 
@@ -22,6 +21,7 @@ public class FlickrService {
 
         //get the top five photos of photoslist and set them to the city
         this.city.setTopFivePhotos(ClusterService.getTopFivePhotos(photosList));
+
 
         return this.city;
     }

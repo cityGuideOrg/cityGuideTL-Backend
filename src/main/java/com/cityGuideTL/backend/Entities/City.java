@@ -3,8 +3,11 @@ package com.cityGuideTL.backend.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
+=======
+>>>>>>> random push for kiziridis
 
 @JsonComponent
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,7 +23,10 @@ public class City {
     @JsonProperty("_content")
     private String content;
 
+<<<<<<< HEAD
     private ArrayList<Photo> topFivePhotos = new ArrayList<>();
+=======
+>>>>>>> random push for kiziridis
 
     public City() {
     }
@@ -52,6 +58,7 @@ public class City {
     public String getContent() {
         return content;
     }
+<<<<<<< HEAD
 
     public ArrayList<Photo> getTopFivePhotos() {
         return topFivePhotos;
@@ -64,4 +71,6 @@ public class City {
     public void addATopPhoto(Photo topPhoto){
         this.topFivePhotos.add(topPhoto);
     }
+=======
+>>>>>>> random push for kiziridis
 }
