@@ -1,17 +1,16 @@
 package com.cityGuideTL.backend.Models;
 
-import com.cityGuideTL.backend.Entities.Photo;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "city")
-public class City {
+public class CityModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-//    @Column(updatable = false, nullable = false)
     private Integer id;
     private String placeId;
     private String longitude;
@@ -19,10 +18,11 @@ public class City {
     private String woe_name;
     private String content;
 
-    @ElementCollection
-    @CollectionTable(name = "TopFivePhotos" , joinColumns =@JoinColumn(name = "placeId"))
-    @Column(name = "Photo")
-    private List<Photo> topFivePhotos = new ArrayList<>();
+    @OneToMany(mappedBy = "cityModel", cascade = CascadeType.ALL)
+    Set<PhotoModel> photoModels = new HashSet<>();
+
+    public CityModel() {
+    }
 
     public Integer getId() {
         return id;
@@ -68,11 +68,11 @@ public class City {
         this.content = content;
     }
 
-    public List<Photo> getTopFivePhotos() {
-        return topFivePhotos;
+    public Set<PhotoModel> getPhotoModels() {
+        return photoModels;
     }
 
-    public void setTopFivePhotos(ArrayList<Photo> topFivePhotos) {
-        this.topFivePhotos = topFivePhotos;
+    public void setPhotoModels(Set<PhotoModel> photoModels) {
+        this.photoModels = photoModels;
     }
 }
