@@ -79,7 +79,7 @@ public class RouteController {
         }
         return minValue;
     }
-    @PostMapping(path="/findBestRoute")
+    @PostMapping(path="/route")
     public @ResponseBody
     Cost findRoute(@RequestBody BestRouteModel body) {
         return Visit(body.startingPoint, body.placesNeedsToBeVisited, null);
