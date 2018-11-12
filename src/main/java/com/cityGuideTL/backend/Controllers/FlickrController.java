@@ -1,6 +1,8 @@
 package com.cityGuideTL.backend.Controllers;
 
+import com.cityGuideTL.backend.Dao.CitiesDao;
 import com.cityGuideTL.backend.Entities.City;
+import com.cityGuideTL.backend.Models.Cities;
 import com.cityGuideTL.backend.Services.FlickrService;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.REST;
@@ -10,6 +12,7 @@ import com.flickr4java.flickr.photos.SearchParameters;
 import com.flickr4java.flickr.places.Place;
 import com.flickr4java.flickr.places.PlacesList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,10 +25,14 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/flickr")
-public class FlickrController {
+public class FlickrController implements  CommandLineRunner{
 
     @Autowired
     private FlickrService flickrService;
+
+    @Autowired
+    private CitiesDao citiesDao;
+
 
     @RequestMapping(value = "/search/{city}", method = RequestMethod.GET)
     public List<Place> search(@PathVariable("city") String city) {
@@ -51,12 +58,7 @@ try {
 
         photo.getGeoData().getLatitude();
         photo.getGeoData().getLatitude();
-
-
     }
-
-
-
     PlacesList<Place> interesting = f.getPlacesInterface().getTopPlacesList(7, null, place.getPlaceId(), null);
 
     List<Place> places = new LinkedList<Place>();
@@ -76,7 +78,23 @@ return null;
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.GET)
-    public City getMostVisitedPlaces(@PathVariable("city") String city){
+    public  City getMostVisitedPlaces(@PathVariable("city") String city){
         return flickrService.getMostVisitedPhotosOfCity(city);
+    }
+
+
+    @Override
+    public void run(String... args) throws Exception {
+        Cities citiesHib = getCities();
+        citiesDao.createCities(citiesHib);
+    }
+
+    private Cities getCities() {
+        Cities cities = new Cities();
+        cities.setPlace_id("dasdasa");
+        cities.setLatitude("31214");
+        cities.setLongitude("14134");
+
+        return cities;
     }
 }
