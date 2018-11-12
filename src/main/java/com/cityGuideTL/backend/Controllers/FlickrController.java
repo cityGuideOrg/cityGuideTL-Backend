@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/flickr")
 public class FlickrController {
-
     @Autowired
     private CitiesRepository citiesRepository;
 
@@ -26,6 +25,7 @@ public class FlickrController {
     @RequestMapping(value = "/{city}", method = RequestMethod.GET)
     public void getMostVisitedPlaces(@PathVariable("city") String city){
         City filledCity = flickrService.getMostVisitedPhotosOfCity(city);
+        mySqlService.writeCityToDB(filledCity);
     }
 
 

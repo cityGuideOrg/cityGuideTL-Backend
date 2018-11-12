@@ -63,6 +63,26 @@ public class City {
         this.topFivePhotos = topFivePhotos;
     }
 
+    public void setPlace_id(String place_id) {
+        this.place_id = place_id;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setWoe_name(String woe_name) {
+        this.woe_name = woe_name;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public void addATopPhoto(Photo topPhoto){
         this.topFivePhotos.add(topPhoto);
     }
