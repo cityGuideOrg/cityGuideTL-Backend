@@ -16,12 +16,12 @@ public class CityService {
     private CitiesRepository citiesRepository;
 
 
-    public void addCity(@RequestBody CityModel city){
+    public void addCity(CityModel city){
         citiesRepository.save(city);
     }
 
 
-    public void deleteCity(@PathVariable Integer id) {
+    public void deleteCity(Integer id) {
         CityModel city;
         try {
             city = citiesRepository.findById(id).orElseThrow(IOException::new);
@@ -34,7 +34,7 @@ public class CityService {
     }
 
 
-    public CityModel getCity(@PathVariable Integer id) {
+    public CityModel getCity(Integer id) {
         CityModel city;
         try {
             city = citiesRepository.findById(id).orElseThrow(IOException::new);
@@ -46,7 +46,7 @@ public class CityService {
     }
 
 
-    public void updateCity(@RequestBody CityModel city) {
+    public void updateCity(CityModel city) {
         //do updates with best practice which is unknown yet.
         //write validation checks
     }
