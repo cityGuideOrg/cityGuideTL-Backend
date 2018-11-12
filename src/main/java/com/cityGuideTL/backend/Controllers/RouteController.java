@@ -11,11 +11,11 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/route")
 public class RouteController {
-
-
+    //1st:parameter from is the starting point of the route, which is the position of the user
+    //2nd:parameter where is a list of all points that the user has to pass from
+    //3rd:parameter is necessary for the recursiveness of the function
     public Cost Visit(Point from, List<Point> where, Cost cost) {
         List<Cost> costs = new LinkedList<Cost>(); //linked list of all costs
-
         //first run-through
         if(cost == null) {
             cost = new Cost();
@@ -27,29 +27,29 @@ public class RouteController {
             pointsTaken.add(from);
             double distanceCost = cost.cost;
 
-            cost = new Cost();
+            cost = new Cost(); // we create a new instance and copy data from other
+            // just not to touch data of other runs
             cost.cost = distanceCost;
             cost.pointsTaken = pointsTaken;
 
+            // everyplace visited already
             if(cost.pointsTaken.size() == where.size() + 1) {
-                return cost;
+                return cost; // return the cost
             }
          //   cost.cost += 5;
         }
 
-
-        //where is the places that we want to visit
         for(Point point : where)  {
             int taken = 0;
+            //if we have visited or not
             for(Point visitedPlaces : cost.pointsTaken) {
-
                 if(visitedPlaces.getLatitude().equals(point.getLatitude()) && visitedPlaces.getLongitude().equals(point.getLongitude())) {
                     taken = 1;
                     break;
                 }
 
             }
-
+            //if we have visited already
             if(taken == 1)
                 continue;
 
@@ -64,9 +64,13 @@ public class RouteController {
 
         }
 
+
+
         double minCost = -1;
         Cost minValue = null;
 
+        // costs array contains in the first recursuin  if A starts with 8 different points
+        // and we find minimum cost among them
         for(Cost all_cost : costs) {
             if( minCost == -1 || all_cost.cost < minCost ) {
                 minValue = all_cost;
@@ -77,8 +81,7 @@ public class RouteController {
     }
     @PostMapping(path="/findBestRoute")
     public @ResponseBody
-    Cost addUser(@RequestBody BestRouteModel body) {
-        Cost stuff = Visit(body.startingPoint, body.placesNeedsToBeVisited, null);
-        return stuff;
+    Cost findRoute(@RequestBody BestRouteModel body) {
+        return Visit(body.startingPoint, body.placesNeedsToBeVisited, null);
     }
 }
