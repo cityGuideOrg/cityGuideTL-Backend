@@ -22,8 +22,13 @@ public class FlickrController {
     @Autowired
     private MySqlService mySqlService;
 
-    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
-    public void getMostVisitedPlaces(@PathVariable("city") String city){
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public City getCity(@PathVariable("id") Integer id){
+
+        return mySqlService.getCityById(id);
+    }
+    @RequestMapping(value = "/write/{city}", method = RequestMethod.GET)
+    public void writeCityToDB(@PathVariable("city") String city){
         City filledCity = flickrService.getMostVisitedPhotosOfCity(city);
         mySqlService.writeCityToDB(filledCity);
     }

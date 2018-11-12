@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +40,7 @@ public class CityMySqlDao {
         CityModel cityModel;
         try {
             cityModel = citiesRepository.findById(id).orElseThrow(IOException::new);
+
         } catch (IOException e) {
             System.out.println("CityModel not found");
             cityModel = null;
@@ -78,12 +80,13 @@ public class CityMySqlDao {
         city.setLatitude(modelCityModel.getLatitude());
         city.setLongitude(modelCityModel.getLongitude());
         city.setWoe_name(modelCityModel.getWoe_name());
+        Set<Photo> photoSet = new HashSet<>();
+        for(PhotoModel photoModel : modelCityModel.getPhotoModels()){
+            Photo photo = new Photo(photoModel.getPhotoID(), photoModel.getLongitude(), photoModel.getLatitude(), photoModel.getTotalNearPhotos());
+            photoSet.add(photo);
+        }
+        city.setTopFivePhotos(new ArrayList<>(photoSet));
 
         return city;
-
     }
-
-
-
-
 }

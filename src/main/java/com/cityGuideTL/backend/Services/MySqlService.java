@@ -23,4 +23,8 @@ public class MySqlService {
 
 //        return "OK";
     }
+    public City getCityById(Integer id){
+        City city = cityMySqlDao.getCityById(id);
+        return city;
+    }
 }
