@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="/city")
-@Repository("CityMySqlDao")
 public class CityController {
     @Autowired
     private CitiesRepository citiesRepository;

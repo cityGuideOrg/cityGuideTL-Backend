@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
-
+//to fix validations
 @RestController
 @RequestMapping(path="/user")
 public class UserController {

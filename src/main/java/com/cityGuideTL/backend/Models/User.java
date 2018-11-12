@@ -62,6 +62,7 @@ public class User {
     public boolean isValid()
     {
         //Validation rules
-        if (emailValidator.hasValu)
+        //if (emailValidator.hasValue)
+        return true;
     }
 }
