@@ -53,6 +53,13 @@ public class Photo implements Comparable<Photo>, Serializable {
         return photoID;
     }
 
+    public Photo(String photoID, String longitude, String latitude, int totalNearPhotos) {
+        this.photoID = photoID;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.totalNearPhotos = totalNearPhotos;
+    }
+
     public void setPhotoID(String photoID) {
         this.photoID = photoID;
     }
