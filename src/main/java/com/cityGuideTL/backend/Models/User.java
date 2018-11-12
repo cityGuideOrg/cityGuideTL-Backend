@@ -59,5 +59,9 @@ public class User {
         this.email = email;
     }
 
-
+    public boolean isValid()
+    {
+        //Validation rules
+        if (emailValidator.hasValu)
+    }
 }

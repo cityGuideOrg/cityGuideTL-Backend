@@ -53,10 +53,14 @@ public class UserController {
         //you either need to get an id on the body and replace the whole user and save it or just replace the names etc.
         User userToUpdate = userRepository.getOne(id);
         userToUpdate.setFirstname(body.getFirstname());
+        if(body.getPassword()!=null) {
+            //validate on User entity
+        }
         userToUpdate.setLastname(body.getLastname());
         userToUpdate.setEmail(body.getEmail());
         userToUpdate.setPassword(body.getPassword());
         userToUpdate.setUsername(body.getUsername());
-        userRepository.save(userToUpdate);
+        userRepository.save(body);
+        //wait for best practice
     }
 }
