@@ -9,12 +9,16 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
+
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
@@ -33,15 +37,13 @@ public class UserRepositoryTest {
         newUser.setFirstname("alex");
         newUser.setEmail("alexbadrishvili");
         newUser.setLastname("badrishvili");
-        entityManager.persist(newUser);
-        entityManager.flush();
+        userRepository.save(newUser);
 
         User secondUser = new User();
         secondUser.setFirstname("alex");
         secondUser.setEmail("alexbadrishvili");
         secondUser.setLastname("badrishvili");
-        entityManager.persist(secondUser);
-        entityManager.flush();
+        userRepository.save(secondUser);
 
         List<User> users = userRepository.findAll();
 
@@ -53,8 +55,8 @@ public class UserRepositoryTest {
     public void whenFindAllById() {
         User user = new User();
         user.setFirstname("Dimitrios");
-        entityManager.persist(user);
-        entityManager.flush();
+        userRepository.save(user);
+
         Integer id = user.getId();
 
         User testUser = userRepository.findById(id).get();
