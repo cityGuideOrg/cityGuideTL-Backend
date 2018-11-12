@@ -1,6 +1,6 @@
 package com.cityGuideTL.backend;
 
-import com.cityGuideTL.backend.Models.User;
+import com.cityGuideTL.backend.Models.UserModel;
 import com.cityGuideTL.backend.Repository.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,11 +9,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,7 +21,7 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = NONE)
-public class UserRepositoryTest {
+public class UserModelRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 
@@ -33,35 +30,35 @@ public class UserRepositoryTest {
 
     @Test
     public void whenFindAll() {
-        User newUser = new User();
-        newUser.setFirstname("alex");
-        newUser.setEmail("alexbadrishvili");
-        newUser.setLastname("badrishvili");
-        userRepository.save(newUser);
+        UserModel newUserModel = new UserModel();
+        newUserModel.setFirstname("alex");
+        newUserModel.setEmail("alexbadrishvili");
+        newUserModel.setLastname("badrishvili");
+        userRepository.save(newUserModel);
 
-        User secondUser = new User();
-        secondUser.setFirstname("alex");
-        secondUser.setEmail("alexbadrishvili");
-        secondUser.setLastname("badrishvili");
-        userRepository.save(secondUser);
+        UserModel secondUserModel = new UserModel();
+        secondUserModel.setFirstname("alex");
+        secondUserModel.setEmail("alexbadrishvili");
+        secondUserModel.setLastname("badrishvili");
+        userRepository.save(secondUserModel);
 
-        List<User> users = userRepository.findAll();
+        List<UserModel> userModels = userRepository.findAll();
 
-        assertThat(users.size()).isEqualTo(2);
-        assertThat(users.get(0)).isEqualTo(newUser);
-        assertThat(users.get(1)).isEqualTo(secondUser);
+        assertThat(userModels.size()).isEqualTo(2);
+        assertThat(userModels.get(0)).isEqualTo(newUserModel);
+        assertThat(userModels.get(1)).isEqualTo(secondUserModel);
     }
     @Test
     public void whenFindAllById() {
-        User user = new User();
-        user.setFirstname("Dimitrios");
-        userRepository.save(user);
+        UserModel userModel = new UserModel();
+        userModel.setFirstname("Dimitrios");
+        userRepository.save(userModel);
 
-        Integer id = user.getId();
+        Integer id = userModel.getId();
 
-        User testUser = userRepository.findById(id).get();
+        UserModel testUserModel = userRepository.findById(id).get();
 
-        assertThat(testUser.getFirstname()).isEqualTo(user.getFirstname());
+        assertThat(testUserModel.getFirstname()).isEqualTo(userModel.getFirstname());
     }
 
 }

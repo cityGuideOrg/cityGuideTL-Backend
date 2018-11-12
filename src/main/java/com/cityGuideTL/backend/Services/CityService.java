@@ -1,11 +1,10 @@
 package com.cityGuideTL.backend.Services;
 
 
-import com.cityGuideTL.backend.Models.City;
-import com.cityGuideTL.backend.Models.User;
+
+import com.cityGuideTL.backend.Models.CityModel;
 import com.cityGuideTL.backend.Repository.CitiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -17,13 +16,13 @@ public class CityService {
     private CitiesRepository citiesRepository;
 
 
-    public void addCity(@RequestBody City city){
+    public void addCity(@RequestBody CityModel city){
         citiesRepository.save(city);
     }
 
 
     public void deleteCity(@PathVariable Integer id) {
-        City city;
+        CityModel city;
         try {
             city = citiesRepository.findById(id).orElseThrow(IOException::new);
         } catch (IOException e) {
@@ -35,8 +34,8 @@ public class CityService {
     }
 
 
-    public City getCity(@PathVariable Integer id) {
-        City city;
+    public CityModel getCity(@PathVariable Integer id) {
+        CityModel city;
         try {
             city = citiesRepository.findById(id).orElseThrow(IOException::new);
         } catch (IOException e) {
@@ -47,12 +46,12 @@ public class CityService {
     }
 
 
-    public void updateCity(@RequestBody City city) {
+    public void updateCity(@RequestBody CityModel city) {
         //do updates with best practice which is unknown yet.
         //write validation checks
     }
 
-    public List<City> getAll(){
+    public List<CityModel> getAll(){
         return citiesRepository.findAll();
     }
 

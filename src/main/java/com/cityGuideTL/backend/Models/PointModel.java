@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "point")
-public class Point {
+public class PointModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)

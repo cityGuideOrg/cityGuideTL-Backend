@@ -1,17 +1,14 @@
 package com.cityGuideTL.backend.Controllers;
 
+import com.cityGuideTL.backend.Models.CityModel;
 import com.cityGuideTL.backend.Services.CityService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cityGuideTL.backend.Models.City;
-import com.cityGuideTL.backend.Models.User;
 import com.cityGuideTL.backend.Repository.CitiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -23,7 +20,7 @@ public class CityController {
 
     @PostMapping
     @ResponseBody
-    public void addCity(@RequestBody City city){
+    public void addCity(@RequestBody CityModel city){
         cityService.addCity(city);
     }
 
@@ -35,17 +32,17 @@ public class CityController {
 
     @GetMapping(path="/{id}")
     @ResponseBody
-    public City getCity(@PathVariable Integer id) {
+    public CityModel getCity(@PathVariable Integer id) {
        return cityService.getCity(id);
     }
 
 
-    public void updateCity(@RequestBody City city) {
+    public void updateCity(@RequestBody CityModel city) {
         cityService.updateCity(city);
     }
     @GetMapping
     @ResponseBody
-    public List<City> getAll(){
+    public List<CityModel> getAll(){
         return cityService.getAll();
     }
 
