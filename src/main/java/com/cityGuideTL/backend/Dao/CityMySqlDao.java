@@ -53,7 +53,7 @@ public class CityMySqlDao {
     }
 
 
-    private CityModel entityToModel(City city,Set<Photo> photos){
+    private CityModel entityToModel(City city, Set<Photo> photos){
         CityModel modelCityModel = new CityModel();
 
         modelCityModel.setContent(city.getContent());
