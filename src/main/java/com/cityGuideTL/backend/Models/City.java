@@ -1,46 +1,47 @@
 package com.cityGuideTL.backend.Models;
 
+import com.cityGuideTL.backend.Entities.Photo;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "city")
 public class City {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(updatable = false, nullable = false)
+    @GeneratedValue(strategy= GenerationType.AUTO)
+//    @Column(updatable = false, nullable = false)
     private Integer id;
-    private String name;
     private String placeId;
-    private BigDecimal longitude;
-    private BigDecimal latitude;
+    private String longitude;
+    private String latitude;
+    private String woe_name;
+    private String content;
+
+    @ElementCollection
+    @CollectionTable(name = "TopFivePhotos" , joinColumns =@JoinColumn(name = "placeId"))
+    @Column(name = "Photo")
+    private List<Photo> topFivePhotos = new ArrayList<>();
 
     public Integer getId() {
         return id;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPlaceId() {
@@ -49,5 +50,29 @@ public class City {
 
     public void setPlaceId(String placeId) {
         this.placeId = placeId;
+    }
+
+    public String getWoe_name() {
+        return woe_name;
+    }
+
+    public void setWoe_name(String woe_name) {
+        this.woe_name = woe_name;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public List<Photo> getTopFivePhotos() {
+        return topFivePhotos;
+    }
+
+    public void setTopFivePhotos(ArrayList<Photo> topFivePhotos) {
+        this.topFivePhotos = topFivePhotos;
     }
 }

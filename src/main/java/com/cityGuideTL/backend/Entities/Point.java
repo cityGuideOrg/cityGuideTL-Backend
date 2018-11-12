@@ -3,9 +3,10 @@ package com.cityGuideTL.backend.Entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 @JsonComponent
-public class Point {
+public class Point implements Serializable {
 
     @JsonProperty
     private BigDecimal latitude;
