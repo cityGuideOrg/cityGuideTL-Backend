@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 //todo: access jpaapi through this service, commit failcheck code
 //todo: map entities to models
+//todo: create user entity for json handling
 public class UserService {
     @Autowired
     UserRepository userRepository;
@@ -61,5 +62,6 @@ public class UserService {
         userRepository.save(body);
         //wait for best practice
     }
+
 
 }
