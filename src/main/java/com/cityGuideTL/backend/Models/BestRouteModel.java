@@ -1,5 +1,6 @@
-package com.cityGuideTL.backend.Entities;
+package com.cityGuideTL.backend.Models;
 
+import com.cityGuideTL.backend.Entities.Point;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
 

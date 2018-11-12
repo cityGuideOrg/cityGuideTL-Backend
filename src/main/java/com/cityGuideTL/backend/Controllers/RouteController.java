@@ -1,6 +1,6 @@
 package com.cityGuideTL.backend.Controllers;
 
-import com.cityGuideTL.backend.Entities.BestRouteModel;
+import com.cityGuideTL.backend.Models.BestRouteModel;
 import com.cityGuideTL.backend.Entities.Cost;
 import com.cityGuideTL.backend.Entities.Point;
 import org.springframework.web.bind.annotation.*;

@@ -30,7 +30,7 @@ public class FlickrController {
 
             return mySqlService.getCityById(id);
         }
-        @RequestMapping(value = "/write/{city}", method = RequestMethod.GET)
+        @RequestMapping(value = "/write/{city}", method = RequestMethod.POST)
         public void writeCityToDB (@PathVariable("city") String city){
             City filledCity = flickrService.getMostVisitedPhotosOfCity(city);
             mySqlService.writeCityToDB(filledCity);

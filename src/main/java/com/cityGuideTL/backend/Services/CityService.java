@@ -46,7 +46,7 @@ public class CityService {
     }
 
 
-    public void updateCity(CityModel city) {
+    public void updateCity(@RequestBody CityModel city) {
         //do updates with best practice which is unknown yet.
         //write validation checks
     }
