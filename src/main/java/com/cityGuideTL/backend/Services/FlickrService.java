@@ -22,7 +22,6 @@ public class FlickrService {
         //get the top five photos of photoslist and set them to the city
         this.city.setTopFivePhotos(ClusterService.getTopFivePhotos(photosList));
 
-
         return this.city;
     }
 }

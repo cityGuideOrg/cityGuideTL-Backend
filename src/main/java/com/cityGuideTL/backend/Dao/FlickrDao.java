@@ -4,6 +4,7 @@ import com.cityGuideTL.backend.Entities.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.client.RestTemplate;
 
+
 public class FlickrDao {
     private String apiKey = "e6ca2e5d10eb5160e389625f9bfa5439";
     PhotosList photosList = new PhotosList();
