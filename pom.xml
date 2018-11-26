@@ -48,7 +48,6 @@
 			<scope>test</scope>
 		</dependency>
 
-<<<<<<< HEAD
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -66,8 +65,6 @@
             <artifactId>flickr4java</artifactId>
             <version>2.19</version>
         </dependency>
-=======
->>>>>>> 00fb1991f667397fa37c4a0245cb8fedb6dc4646
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>

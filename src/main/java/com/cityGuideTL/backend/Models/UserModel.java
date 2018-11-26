@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class UserModel {
+    //TODO: hash the id of each tableid, secure password, setup auth0
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
