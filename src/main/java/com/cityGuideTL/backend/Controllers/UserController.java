@@ -18,12 +18,13 @@ public class UserController {
     @GetMapping
     @ResponseBody
     public List<UserModel> getAll() {
-        return userService.getAll();
+        return userRepository.findAll();
     }
 
+    @PostMapping
     //create a user
     public void addUser(@RequestBody UserModel body) {
-       userService.addUser(body);
+       userRepository.save(body);
     }
 
     //get user with specified id

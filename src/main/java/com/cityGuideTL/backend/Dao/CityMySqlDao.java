@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+//TODO:stop using mysql namespaces, and mapping entities to models here
+//use the CityService class for such operations.
 @Repository("CitiesRepository")
 public class CityMySqlDao {
     @Autowired

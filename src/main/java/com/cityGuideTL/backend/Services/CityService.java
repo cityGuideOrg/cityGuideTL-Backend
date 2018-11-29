@@ -5,12 +5,13 @@ package com.cityGuideTL.backend.Services;
 import com.cityGuideTL.backend.Models.CityModel;
 import com.cityGuideTL.backend.Repository.CitiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-
-
+//TODO:map entities to models here
+@Service
 public class CityService {
     @Autowired
     private CitiesRepository citiesRepository;
@@ -46,13 +47,26 @@ public class CityService {
     }
 
 
-    public void updateCity(@RequestBody CityModel city) {
-        //do updates with best practice which is unknown yet.
-        //write validation checks
+    public void updateCity(Integer id, CityModel city) {
+        try {
+            citiesRepository.findById(id).orElseThrow(IOException::new);
+            citiesRepository.save(city);
+        } catch(IOException e) {
+            System.out.println("City of " + id.toString() + " not found");
+        }
+        
+        
     }
 
     public List<CityModel> getAll(){
-        return citiesRepository.findAll();
+        List<CityModel> cities;
+        try {
+            cities = citiesRepository.findAll();
+        } catch(Exception e) {
+            System.out.println(e);
+            cities = null;
+        }
+        return cities;
     }
 
 
