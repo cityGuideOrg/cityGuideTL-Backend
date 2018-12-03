@@ -19,10 +19,12 @@ public class FlickrController {
     @Autowired
     private FlickrService flickrService;
     @Autowired
+    
+    
     private MySqlService mySqlService;
-    @RequestMapping(value = "/{city}", method = RequestMethod.GET)
-    public void getMostVisitedPlaces(@PathVariable("city") String city) {
-    }
+    //@RequestMapping(value = "/{city}", method = RequestMethod.GET)
+    //public void getMostVisitedPlaces(@PathVariable("city") String city) {
+   // }
 
 
         @RequestMapping(value = "/{id}", method = RequestMethod.GET)
