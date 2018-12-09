@@ -38,6 +38,8 @@ public class FlickrController {
             mySqlService.writeCityToDB(filledCity);
         }
 
+        
+
 }
 
 
