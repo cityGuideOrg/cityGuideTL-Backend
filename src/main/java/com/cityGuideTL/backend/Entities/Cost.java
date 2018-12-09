@@ -8,4 +8,11 @@ public class Cost {
 
     public List<Point> pointsTaken;
 
+    public Cost() {
+
+    }
+
+    public Cost(double cost) {
+        
+    }
 }
