@@ -56,13 +56,14 @@ public class RouteControllerTest {
         pointsList.add(new Point("11.10000","10.20471"));
         cost = routeController.Visit(startingPoint, pointsList, null);
         boolean isEqual = false;
+        //assertThat
         for(Point pointOfActual : pointsList) {
             for(Point pointOfExpected : cost.pointsTaken) {
                 if(pointOfExpected.getLatitude().equals(pointOfExpected.getLatitude()) && 
                 pointOfExpected.getLongitude().equals(pointOfExpected.getLongitude())) 
                     isEqual=true;
             }
-            if(isEqual == false) {
+            if(isEqual == false) {//hamcrest, matchers
                 fail();
             }else
                 isEqual = false;
