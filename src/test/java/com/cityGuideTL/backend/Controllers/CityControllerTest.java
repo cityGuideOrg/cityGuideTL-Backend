@@ -14,7 +14,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CityControllerTest {
-    private MockMvc mvc;
 
 
     //test controller methods, by mocking the webserver, and sending httprequests
