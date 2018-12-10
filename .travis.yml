@@ -3,6 +3,7 @@ jdk: oraclejdk11
 
 script:
  - mvn clean package
+ - mvn package
  - mvn cobertura:cobertura
 
 after_success:
