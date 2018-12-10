@@ -3,7 +3,6 @@ jdk: oraclejdk8
 
 script:
  - ./mvnw clean package
- - ./mvnw package
  - ./mvnw cobertura:cobertura
 
 after_success:
