@@ -16,11 +16,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 public class CityControllerTest {
     private MockMvc mvc;
 
-    @Mock
-    private CitiesRepository citiesRepository;
-    
-    @InjectMocks
-    private CityController cityController;
 
     //test controller methods, by mocking the webserver, and sending httprequests
     //like a client would
