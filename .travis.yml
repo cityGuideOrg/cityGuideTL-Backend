@@ -1,7 +1,5 @@
 language: java
 jdk: oraclejdk11
-sudo: false # faster builds
-
 
 script:
  - mvn clean package
