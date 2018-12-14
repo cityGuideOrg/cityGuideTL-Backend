@@ -87,6 +87,8 @@ public class CityMySqlDao {
             photoSet.add(photo);
         }
         city.setTopFivePhotos(new ArrayList<>(photoSet));
+        city.sortPointsArrayList();
+
 
         return city;
     }

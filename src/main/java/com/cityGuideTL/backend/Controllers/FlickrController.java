@@ -19,8 +19,6 @@ public class FlickrController {
     @Autowired
     private FlickrService flickrService;
     @Autowired
-    
-    
     private MySqlService mySqlService;
     //@RequestMapping(value = "/{city}", method = RequestMethod.GET)
     //public void getMostVisitedPlaces(@PathVariable("city") String city) {
@@ -32,7 +30,16 @@ public class FlickrController {
 
             return mySqlService.getCityById(id);
         }
-        @RequestMapping(value = "/write/{city}", method = RequestMethod.POST)
+
+        @RequestMapping(value = "/{id}/{longitude}/{latitude}", method = RequestMethod.GET)
+        public City getCityWithSortedByDistancePoints (@PathVariable("id") Integer id, @PathVariable("longitude") Double longitude, @PathVariable("latitude") Double latitude){
+
+            City city = mySqlService.getCityById(id);
+            city.sortPointsArrayListByDistance(longitude,latitude);
+            System.out.println("hey");
+            return city;
+        }
+        @RequestMapping(value = "/write/{city}", method = RequestMethod.GET)
         public void writeCityToDB (@PathVariable("city") String city){
             City filledCity = flickrService.getMostVisitedPhotosOfCity(city);
             mySqlService.writeCityToDB(filledCity);
