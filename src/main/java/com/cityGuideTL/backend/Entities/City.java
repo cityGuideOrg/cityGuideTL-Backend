@@ -1,5 +1,6 @@
 package com.cityGuideTL.backend.Entities;
 
+import com.cityGuideTL.backend.Services.PointsSortingService;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.boot.jackson.JsonComponent;
@@ -85,6 +86,14 @@ public class City {
 
     public void addATopPhoto(Photo topPhoto){
         this.topFivePhotos.add(topPhoto);
+    }
+
+    public void sortPointsArrayList(){
+        PointsSortingService.sortByPopularity(topFivePhotos);
+    }
+
+    public void sortPointsArrayListByDistance(Double longitude, Double latitude){
+        PointsSortingService.sortByDistance(topFivePhotos,longitude,latitude);
     }
 
 }
