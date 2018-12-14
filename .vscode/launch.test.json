@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "backend",
+                "projectName": "backend",
+                "workingDirectory": "/Users/greycr0w/IdeaProjects/cityGuideTL-BackendLast",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "backend",
+                "projectName": "backend",
+                "workingDirectory": "/Users/greycr0w/IdeaProjects/cityGuideTL-BackendLast",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

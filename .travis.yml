@@ -1,0 +1,8 @@
+language: java
+jdk: oraclejdk8
+
+script:
+ - ./mvnw clean package
+
+after_success:
+ - bash <(curl -s https://codecov.io/bash) -t 99de48e1-2b71-49ee-940d-722904ded40e

@@ -15,6 +15,17 @@ public class RouteController {
     //2nd:parameter where is a list of all points that the user has to pass from
     //3rd:parameter is necessary for the recursiveness of the function
     public Cost Visit(Point from, List<Point> where, Cost cost) {
+       if(cost == null) {
+            try {
+                for(Point point : where) {
+                    if(point.equals(from)) {
+                            throw new Exception();
+                        }
+                    }
+            }catch (Exception e) {
+                return new Cost(0);
+            }
+        }
         List<Cost> costs = new LinkedList<Cost>(); //linked list of all costs
         //first run-through
         if(cost == null) {
