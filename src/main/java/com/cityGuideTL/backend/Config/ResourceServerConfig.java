@@ -18,11 +18,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		resources.resourceId(RESOURCE_ID).stateless(false);
 	}
 
+	//add class path matchers here
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
         http.
                 anonymous().disable()
-                .authorizeRequests()
+				.authorizeRequests()
+				.antMatchers("/city/**").access("hasRole('ADMIN')")
                 .antMatchers("/users/**").access("hasRole('ADMIN')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 	}

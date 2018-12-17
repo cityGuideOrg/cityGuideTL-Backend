@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-
+	//TODO: this is a user resource which we save in
 	static final String CLIEN_ID = "greycr0w";
 	static final String CLIENT_SECRET = "$2a$04$jHhPKRXizyCQHgPHV27mPOyy8GB2PU8FfztHWuaTLmrF/3.VxI9kK";
 	static final String GRANT_TYPE_PASSWORD = "password";
