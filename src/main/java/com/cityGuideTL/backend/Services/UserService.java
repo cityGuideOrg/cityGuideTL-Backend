@@ -3,14 +3,22 @@ package com.cityGuideTL.backend.Services;
 import com.cityGuideTL.backend.Models.UserModel;
 import com.cityGuideTL.backend.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 //todo: access jpaapi through this service, commit failcheck code
 //todo: map entities to models
 //todo: create user entity for json handling
-public class UserService {
+
+@Service
+public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
     //get all users
@@ -60,8 +68,24 @@ public class UserService {
         userModelToUpdate.setPassword(body.getPassword());
         userModelToUpdate.setUsername(body.getUsername());
         userRepository.save(body);
-        //wait for best practice
+        // wait for best practice
     }
+
+
+    //TODO:implemented method from interface userRepository
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserModel user = userRepository.findByUsername(username);
+		if(user == null){
+			throw new UsernameNotFoundException("Invalid username or password.");
+		}
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthority());	
+    }
+
+    //TODO: defined authorities
+    private List<SimpleGrantedAuthority> getAuthority() {
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
+	}
 
 
 }
