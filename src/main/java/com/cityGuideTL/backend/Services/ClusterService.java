@@ -1,5 +1,6 @@
 package com.cityGuideTL.backend.Services;
 
+
 import com.cityGuideTL.backend.Entities.Photo;
 import com.cityGuideTL.backend.Entities.PhotosList;
 import org.springframework.stereotype.Service;
@@ -57,4 +58,5 @@ public class ClusterService {
         }
         return true;
     }
+
 }

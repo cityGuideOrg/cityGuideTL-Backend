@@ -2,6 +2,7 @@ package com.cityGuideTL.backend.Services;
 
 
 
+import com.cityGuideTL.backend.Entities.City;
 import com.cityGuideTL.backend.Models.CityModel;
 import com.cityGuideTL.backend.Repository.CitiesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,15 @@ public class CityService {
     private CitiesRepository citiesRepository;
 
 
-    public void addCity(CityModel city){
-        citiesRepository.save(city);
+    public City addCity(City city) {
+        CityModel newCityModel = new CityModel();
+        newCityModel.setPlaceId(city.getPlace_id());
+        newCityModel.setLongitude(city.getLongitude());
+        newCityModel.setLatitude(city.getLatitude());
+        newCityModel.setWoe_name(city.getWoe_name());
+        newCityModel.setContent(city.getContent());
+        citiesRepository.save(newCityModel);
+        return city;
     }
 
 
@@ -68,6 +76,11 @@ public class CityService {
         }
         return cities;
     }
+
+
+	public Object findAll() {
+		return null;
+	}
 
 
 
