@@ -19,26 +19,32 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
 public class RouteControllerTest {
 
-    private Cost cost;
-    private Point startingPoint;
-    private List<Point> pointsList;
 
-    @Autowired
-    private RouteController routeController;
+//    @Autowired
+//    private RouteController routeController;
 
     @Test
     public void contexLoads() throws Exception {
+        RouteController routeController = new RouteController();
         assertNotNull(routeController);
     }
     
     @Test
     public void routeShouldBeGoingThroughDifferentPoints() {
+        RouteController routeController = new RouteController();
+
+        Cost cost;
+        Point startingPoint;
+        List<Point> pointsList;
+
         cost = new Cost();
         startingPoint = new Point("11.20471", "-61.98753");
         pointsList = new ArrayList<Point>(Arrays.asList(startingPoint, startingPoint, startingPoint));
@@ -48,6 +54,12 @@ public class RouteControllerTest {
 
     @Test
     public void routeShouldIncludeAllOfThePointsProvidedForAFullRoute() {
+        RouteController routeController = new RouteController();
+
+        Cost cost;
+        Point startingPoint;
+        List<Point> pointsList;
+
         cost = new Cost();
         startingPoint = new Point("11.20471", "-61.98753");
         pointsList = new ArrayList<Point>();
@@ -73,6 +85,12 @@ public class RouteControllerTest {
 
     @Test
     public void ifProvidedWithOnePointDestination() {
+        RouteController routeController = new RouteController();
+
+        Cost cost;
+        Point startingPoint;
+        List<Point> pointsList;
+
         cost = new Cost();
         startingPoint = new Point("11.20471", "-61.98753");
         pointsList = new ArrayList<Point>();
